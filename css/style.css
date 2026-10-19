@@ -499,13 +499,15 @@ h1 .ks,h2 .ks{text-wrap:balance}
   --display:"B Serif Latin","Times New Roman",Times,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
 }
 /* 영문 글자만 Georgia (PC 에 깔린 글꼴 local — 내려받지 않음). Georgia 숫자는 옛날식이라 숫자·기호는 Times New Roman, 한글은 고딕 */
+html[lang="ja"]{--display:"B Serif Latin","Times New Roman",Times,"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Meiryo",sans-serif}
+html[lang="zh-CN"]{--display:"B Serif Latin","Times New Roman",Times,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif}
 @font-face{font-family:"B Serif Latin";src:local("Georgia"),local("Georgia Regular");font-weight:400;unicode-range:U+0041-005A,U+0061-007A,U+00C0-00FF}
 @font-face{font-family:"B Serif Latin";src:local("Georgia Bold"),local("Georgia-Bold");font-weight:700;unicode-range:U+0041-005A,U+0061-007A,U+00C0-00FF}
 
 /* A안 CSS 에 박혀 있는 갈색 값 덮어쓰기 */
 .header{background:rgba(244,243,240,.94);border-bottom-color:var(--ink)}
 .mobile-nav,.card:hover,.fixed-bar,.designer-card .designer-badge{box-shadow:none}
-@media(min-width:960px){.fixed-bar{box-shadow:0 8px 30px rgba(0,0,0,.22)}}
+@media(min-width:960px){.fixed-bar{box-shadow:0 8px 30px rgba(0,0,0,.22);outline:1px solid rgba(244,243,240,.28)}}
 footer{background:var(--black);color:var(--on-black-soft)}
 .footer-nav a,.footer-sns a{color:var(--on-black-soft)}
 .footer-sns a{border-bottom-color:var(--on-black-line)}
@@ -521,11 +523,12 @@ footer .copy{color:rgba(244,243,240,.35)}
 .btn,.lang-switch,.mobile-nav .lang-row a,.naver-discount{border-radius:0}
 .btn{letter-spacing:.08em;font-weight:600}
 .lang-switch{border-color:var(--ink)}
-.gnb{font-size:13.5px;letter-spacing:.06em}
+.gnb{font-size:13.5px;letter-spacing:.02em}
+html[lang="ja"] .gnb,html[lang="zh-CN"] .gnb{gap:16px;font-size:13px;letter-spacing:0}
 .gnb a.active{border-bottom-width:1px;border-bottom-color:var(--ink)}
 
 /* ===== 큰 제목 ===== */
-.page-head{max-width:var(--max);margin:0 auto;text-align:left;padding:64px 20px 40px;border-bottom:1px solid var(--ink)}
+.page-head{width:calc(100% - 40px);max-width:calc(var(--max) - 40px);margin:0 auto;text-align:left;padding:64px 0 40px;border-bottom:1px solid var(--ink)}
 .page-head .eyebrow{font-size:11.5px;letter-spacing:.34em;color:var(--ink-soft)}
 .page-head h1{font-family:var(--display);font-size:clamp(38px,8.5vw,80px);line-height:1.08;letter-spacing:-.01em;margin-top:14px}
 .page-head p{margin:18px 0 0;max-width:620px;font-size:15.5px}
@@ -544,21 +547,22 @@ main{counter-reset:bsec}
 /* ===== 홈: 히어로 (왼쪽 아래 큰 제목 · 흑백 영상) ===== */
 .hero video,.hero .hero-fallback{height:88vh;max-height:820px;min-height:520px;filter:grayscale(1) contrast(1.05)}
 .hero::after{background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,.72) 100%)}
-.hero-text{align-items:flex-start;justify-content:flex-end;text-align:left;padding:0 20px 56px;max-width:var(--max);margin:0 auto}
+.hero-text{align-items:flex-start;justify-content:flex-end;text-align:left;padding:0 20px max(96px,15vh);max-width:var(--max);margin:0 auto}
 .hero-text .eyebrow{font-size:11px;letter-spacing:.4em;margin-bottom:20px}
 .hero-text h1{font-family:var(--display);font-size:clamp(40px,10vw,108px);line-height:1.04;letter-spacing:-.01em;font-weight:700}
 .hero-text p{max-width:460px;margin-top:22px}
 .hero-cta{justify-content:flex-start;margin-top:30px}
-@media(min-width:960px){.hero-text{padding-bottom:88px}}
+/* 외국어 매장명은 길어서 (영어 4줄) 한 단계 작게 */
+html:not([lang="ko"]) .hero-text h1{font-size:clamp(34px,6.4vw,76px);line-height:1.08}
 
 /* ===== 홈: 소개 (왼쪽 큰 제목 · 오른쪽 본문) ===== */
 .home-about{max-width:var(--max);text-align:left;display:grid;gap:0 64px}
-.home-about h2{font-family:var(--display);font-size:clamp(30px,6.5vw,54px);line-height:1.15;letter-spacing:-.01em;margin-bottom:28px}
+.home-about h2{font-family:var(--display);font-size:clamp(28px,6vw,40px);line-height:1.15;letter-spacing:-.01em;margin-bottom:28px}
 .home-about h2 em{font-style:normal}
 .home-about p{font-size:15.5px;line-height:1.85}
 .home-points{max-width:none;margin:26px 0 0}
 @media(min-width:960px){
-  .home-about{grid-template-columns:5fr 7fr}
+  .home-about{grid-template-columns:7fr 6fr}
   .home-about > .sec-head{grid-column:1 / -1}
   .home-about > h2{grid-column:1;grid-row:2 / span 6;align-self:start}
   .home-about > :not(.sec-head):not(h2){grid-column:2}
