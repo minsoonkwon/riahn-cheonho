@@ -1,17 +1,17 @@
 /* =========================================
    리안헤어 천호역점 - 공통 스타일
-   디자인 템플릿 B · 에디토리얼 (흑백 대비 · 배경 #F4F3F0 / 텍스트 #141414 / 포인트 #1C1C1C / 보조 #D4D2CC)
-   요청서 2절 B안 — 김포시청점 구조·클래스명 그대로, :root 토큰과 하드코딩 색상값만 무채색으로 바꿈
+   기본은 디자인 템플릿 A 구조(발산점 CSS) · 맨 끝 「디자인 템플릿 B」 블록이 색·글꼴·배치를 덮어씀
+   B 블록 원본: _build/templates/style-b.css → python _build/templates/apply_template.py 천호역점 B
    ========================================= */
 :root{
-  --bg:#F4F3F0;
-  --bg-card:#FFFFFF;
-  --ink:#141414;
-  --ink-soft:#5E5E5E;
-  --accent:#1C1C1C;
-  --accent-dark:#000000;
-  --line:#D4D2CC;
-  --line-soft:#E6E4DF;
+  --bg:#F7F3EE;
+  --bg-card:#FDFBF8;
+  --ink:#3E362E;
+  --ink-soft:#7A6F63;
+  --accent:#A98467;
+  --accent-dark:#8C6B50;
+  --line:#DDD3C4;
+  --line-soft:#EAE3D8;
   --white:#FFFFFF;
   --max:1080px;
   --bar-h:60px;
@@ -37,7 +37,7 @@ h1,h2,h3{letter-spacing:.03em;font-weight:700}
 /* ===== 공통 헤더 ===== */
 .header{
   position:sticky;top:0;z-index:100;
-  background:rgba(244,243,240,.93);
+  background:rgba(247,243,238,.93);
   backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
@@ -65,7 +65,7 @@ h1,h2,h3{letter-spacing:.03em;font-weight:700}
 .mobile-nav{
   display:none;position:absolute;top:60px;left:0;right:0;
   background:var(--bg);border-bottom:1px solid var(--line);
-  padding:8px 0 14px;box-shadow:0 12px 24px rgba(20,20,20,.08);
+  padding:8px 0 14px;box-shadow:0 12px 24px rgba(62,54,46,.08);
 }
 .mobile-nav.open{display:block}
 .mobile-nav a{display:block;padding:12px 24px;font-size:15.5px;font-weight:500}
@@ -158,7 +158,7 @@ section{padding:56px 0}
 /* ===== 카드 ===== */
 .card-grid{display:grid;gap:16px}
 .card{background:var(--bg-card);border:1px solid var(--line-soft);overflow:hidden;transition:box-shadow .25s}
-.card:hover{box-shadow:0 10px 30px rgba(20,20,20,.1)}
+.card:hover{box-shadow:0 10px 30px rgba(62,54,46,.1)}
 .card img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .card-body{padding:20px}
 .card-body .tag{font-size:11.5px;letter-spacing:.22em;color:var(--accent-dark);font-weight:700;text-transform:uppercase}
@@ -212,7 +212,7 @@ section{padding:56px 0}
 
 /* ===== 오시는 길 ===== */
 .loc-grid{display:grid;gap:24px}
-.map-frame{width:100%;height:360px;border:1px solid var(--line-soft);filter:grayscale(.85)}
+.map-frame{width:100%;height:360px;border:1px solid var(--line-soft);filter:sepia(.12) saturate(.9)}
 .map-links{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
 .map-links a{
   flex:1;min-width:140px;text-align:center;font-size:13px;font-weight:600;
@@ -226,7 +226,7 @@ section{padding:56px 0}
 .loc-hours{margin-top:4px;border-top:1px solid var(--line-soft);padding-top:14px}
 .loc-hours table{border-collapse:collapse;font-size:14px}
 .loc-hours td{padding:3px 18px 3px 0}
-.loc-hours .closed{color:#9B2C2C;font-weight:700}
+.loc-hours .closed{color:#A0522D;font-weight:700}
 @media(min-width:960px){
   .loc-grid{grid-template-columns:1.2fr 1fr;align-items:start;gap:48px}
   .map-frame{height:360px}
@@ -244,18 +244,18 @@ section{padding:56px 0}
 .booking-banner .btn-white:hover{background:var(--bg)}
 
 /* ===== 공통 푸터 ===== */
-footer{background:#111111;color:rgba(244,243,240,.72);padding:48px 0 40px;font-size:13.5px;line-height:1.9}
+footer{background:#332C25;color:rgba(247,243,238,.72);padding:48px 0 40px;font-size:13.5px;line-height:1.9}
 .footer-inner{display:grid;gap:22px}
 .footer-brand{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:16px;letter-spacing:.08em}
 .footer-brand img{height:22px;width:auto;filter:brightness(0) invert(1) opacity(.92)}
 .footer-nav{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px}
-.footer-nav a{color:rgba(244,243,240,.65)}
+.footer-nav a{color:rgba(247,243,238,.65)}
 .footer-nav a:hover{color:#fff}
 .footer-sns{display:flex;gap:16px}
-.footer-sns a{color:rgba(244,243,240,.8);font-weight:600;font-size:13px;border-bottom:1px solid rgba(244,243,240,.3);padding-bottom:2px}
-.footer-sns a:hover{color:#FFFFFF;border-color:#FFFFFF}
-footer .biz{color:rgba(244,243,240,.45);font-size:12px;border-top:1px solid rgba(244,243,240,.14);padding-top:18px}
-footer .copy{color:rgba(244,243,240,.35);font-size:12px}
+.footer-sns a{color:rgba(247,243,238,.8);font-weight:600;font-size:13px;border-bottom:1px solid rgba(247,243,238,.3);padding-bottom:2px}
+.footer-sns a:hover{color:#D9BFA8;border-color:#D9BFA8}
+footer .biz{color:rgba(247,243,238,.45);font-size:12px;border-top:1px solid rgba(247,243,238,.14);padding-top:18px}
+footer .copy{color:rgba(247,243,238,.35);font-size:12px}
 @media(min-width:960px){
   .footer-inner{grid-template-columns:1.2fr 1fr;align-items:start}
   .footer-right{text-align:right}
@@ -267,7 +267,7 @@ footer .copy{color:rgba(244,243,240,.35);font-size:12px}
   position:fixed;left:0;right:0;bottom:0;z-index:200;
   display:flex;height:var(--bar-h);
   padding-bottom:env(safe-area-inset-bottom);
-  box-shadow:0 -4px 18px rgba(20,20,20,.14);
+  box-shadow:0 -4px 18px rgba(62,54,46,.14);
 }
 .fixed-bar a{
   flex:0 0 27%;display:flex;align-items:center;justify-content:center;gap:6px;
@@ -287,20 +287,20 @@ footer .copy{color:rgba(244,243,240,.35);font-size:12px}
   .fixed-bar a:not(.primary) svg{width:20px;height:20px}
 }
 @media(min-width:960px){
-  .fixed-bar{left:auto;right:24px;bottom:24px;width:460px;overflow:hidden;box-shadow:0 8px 30px rgba(20,20,20,.24)}
+  .fixed-bar{left:auto;right:24px;bottom:24px;width:460px;overflow:hidden;box-shadow:0 8px 30px rgba(62,54,46,.24)}
 }
 
 /* ===== 홈: 히어로 영상 ===== */
-.hero{position:relative;overflow:hidden;background:#111111}
+.hero{position:relative;overflow:hidden;background:#332C25}
 .hero video,.hero .hero-fallback{
   width:100%;height:76vh;min-height:440px;max-height:680px;object-fit:cover;display:block;
 }
-.hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.46)}
+.hero::after{content:"";position:absolute;inset:0;background:rgba(40,32,25,.44)}
 .hero-text{
   position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:center;
   text-align:center;color:#fff;padding:0 24px;
 }
-.hero-text .eyebrow{font-size:12.5px;letter-spacing:.38em;font-weight:600;color:#E6E6E6;margin-bottom:16px;text-transform:uppercase}
+.hero-text .eyebrow{font-size:12.5px;letter-spacing:.38em;font-weight:600;color:#E5D3BE;margin-bottom:16px;text-transform:uppercase}
 .hero-text h1{font-size:clamp(25px,5.8vw,42px);font-weight:800;line-height:1.35;letter-spacing:.04em}
 .hero-text p{margin-top:16px;font-size:clamp(14px,3.6vw,16.5px);font-weight:300;max-width:540px;color:rgba(255,255,255,.88)}
 .hero-cta{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
@@ -313,7 +313,7 @@ footer .copy{color:rgba(244,243,240,.35);font-size:12px}
 .home-about .more{display:inline-block;margin-top:14px;font-size:14px;font-weight:600;color:var(--accent-dark);border-bottom:1px solid var(--accent);padding-bottom:2px}
 
 /* 디자이너 카드 인스타그램 링크 */
-.designer-ig{display:inline-flex;align-items:center;gap:7px;margin-top:14px;color:var(--ink);text-decoration:none;font-size:.84rem;letter-spacing:.01em;transition:opacity .2s}
+.designer-ig{display:inline-flex;align-items:center;gap:7px;margin-top:14px;color:#A98467;text-decoration:none;font-size:.84rem;letter-spacing:.01em;transition:opacity .2s}
 .designer-ig:hover{opacity:.62}
 .designer-ig svg{width:18px;height:18px;flex:none}
 
@@ -384,7 +384,7 @@ footer .biz a{color:inherit}
 
 /* 디자이너 카드 어워드 배지 (원본 사진에서 잘라낸 PNG, 3명 동일 크기·위치) */
 .designer-card{position:relative}
-.designer-card .designer-badge{position:absolute;top:14px;right:14px;width:76px;height:76px;aspect-ratio:1/1;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(20,20,20,.25));pointer-events:none}
+.designer-card .designer-badge{position:absolute;top:14px;right:14px;width:76px;height:76px;aspect-ratio:1/1;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(62,54,46,.25));pointer-events:none}
 @media(min-width:720px){.designer-card .designer-badge{width:68px;height:68px;top:12px;right:12px}}
 
 /* ===== 인재채용 보강 ===== */
@@ -470,3 +470,177 @@ h1 .ks,h2 .ks{text-wrap:balance}
 /* 홈 · 가발 · 붙임머리 · 증모 안내 박스 (검단신도시법조타운점 규칙) */
 .home-wig{max-width:760px;margin:0 auto;text-align:center}
 .home-wig p{color:var(--ink-soft);font-size:15px;margin:8px 0 18px}
+
+/* ===== 디자인 템플릿 B 시작 ===== */
+/* 디자인 템플릿 B · 에디토리얼 (흑백 대비 · 큰 제목 · 섹션 번호 · 흑백 사진 · 검은 섹션)
+   참고 화면: https://editorial-salon-template.lovable.app (요청서 2절 B안)
+   - HTML 구조·클래스·SEO 는 A안(김포시청점 계열)과 같다. 이 블록이 style.css 맨 끝에서 덮어쓴다.
+   - 외부 폰트 없음 (CLAUDE.md 13절): 영문은 Georgia·숫자는 Times New Roman(둘 다 PC 기본 글꼴), 한글은 기존 고딕
+   - 섹션 번호는 CSS 카운터 (.sec-head .eyebrow 앞에 01 · 02 …)
+   - 매장 사진·시술 사진·디자이너 사진은 흑백, 마우스를 올리면 원래 색 (터치 화면은 흑백 그대로)
+   - 적용: python _build/templates/apply_template.py <매장 폴더명> B   (마커 사이를 통째로 바꿈 — 직접 고치지 말고 이 파일을 고친 뒤 다시 적용)
+   만든 날: 2026-10-19 (천호역점) */
+
+/* 색상 토큰 (흑백) */
+:root{
+  --bg:#F4F3F0;
+  --bg-card:#FFFFFF;
+  --ink:#141414;
+  --ink-soft:#5E5E5E;
+  --accent:#1C1C1C;
+  --accent-dark:#000000;
+  --line:#D4D2CC;
+  --line-soft:#E6E4DF;
+  --white:#FFFFFF;
+  --black:#111111;
+  --on-black:#F4F3F0;
+  --on-black-soft:rgba(244,243,240,.66);
+  --on-black-line:rgba(244,243,240,.18);
+  --display:"B Serif Latin","Times New Roman",Times,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+}
+/* 영문 글자만 Georgia (PC 에 깔린 글꼴 local — 내려받지 않음). Georgia 숫자는 옛날식이라 숫자·기호는 Times New Roman, 한글은 고딕 */
+@font-face{font-family:"B Serif Latin";src:local("Georgia"),local("Georgia Regular");font-weight:400;unicode-range:U+0041-005A,U+0061-007A,U+00C0-00FF}
+@font-face{font-family:"B Serif Latin";src:local("Georgia Bold"),local("Georgia-Bold");font-weight:700;unicode-range:U+0041-005A,U+0061-007A,U+00C0-00FF}
+
+/* A안 CSS 에 박혀 있는 갈색 값 덮어쓰기 */
+.header{background:rgba(244,243,240,.94);border-bottom-color:var(--ink)}
+.mobile-nav,.card:hover,.fixed-bar,.designer-card .designer-badge{box-shadow:none}
+@media(min-width:960px){.fixed-bar{box-shadow:0 8px 30px rgba(0,0,0,.22)}}
+footer{background:var(--black);color:var(--on-black-soft)}
+.footer-nav a,.footer-sns a{color:var(--on-black-soft)}
+.footer-sns a{border-bottom-color:var(--on-black-line)}
+.footer-sns a:hover,.footer-nav a:hover{color:#fff;border-color:#fff}
+footer .biz{color:rgba(244,243,240,.45);border-top-color:var(--on-black-line)}
+footer .copy{color:rgba(244,243,240,.35)}
+.hero{background:var(--black)}
+.designer-ig{color:var(--ink)}
+.loc-hours .closed{color:#9B2C2C}
+.map-frame{filter:grayscale(.85)}
+
+/* 공통: 각진 모서리 · 가는 검은 선 */
+.btn,.lang-switch,.mobile-nav .lang-row a,.naver-discount{border-radius:0}
+.btn{letter-spacing:.08em;font-weight:600}
+.lang-switch{border-color:var(--ink)}
+.gnb{font-size:13.5px;letter-spacing:.06em}
+.gnb a.active{border-bottom-width:1px;border-bottom-color:var(--ink)}
+
+/* ===== 큰 제목 ===== */
+.page-head{max-width:var(--max);margin:0 auto;text-align:left;padding:64px 20px 40px;border-bottom:1px solid var(--ink)}
+.page-head .eyebrow{font-size:11.5px;letter-spacing:.34em;color:var(--ink-soft)}
+.page-head h1{font-family:var(--display);font-size:clamp(38px,8.5vw,80px);line-height:1.08;letter-spacing:-.01em;margin-top:14px}
+.page-head p{margin:18px 0 0;max-width:620px;font-size:15.5px}
+.breadcrumb{justify-content:flex-start;margin-top:22px;letter-spacing:.06em}
+@media(min-width:960px){.page-head{padding-top:96px;padding-bottom:56px}}
+
+/* ===== 섹션 번호 (01 · 02 …) ===== */
+main{counter-reset:bsec}
+.sec-head{text-align:left;margin-bottom:40px;padding-top:18px;border-top:1px solid var(--ink)}
+.sec-head .eyebrow{display:flex;align-items:baseline;gap:14px;font-size:11px;letter-spacing:.32em;color:var(--ink-soft)}
+.sec-head .eyebrow::before{counter-increment:bsec;content:counter(bsec,decimal-leading-zero);font-family:var(--display);font-size:15px;letter-spacing:0;color:var(--ink);font-weight:400}
+.sec-head h2{font-family:var(--display);font-size:clamp(30px,7vw,60px);line-height:1.12;letter-spacing:-.01em;margin-top:18px}
+.sec-head p{max-width:620px;margin-top:14px;font-size:15px}
+@media(min-width:960px){section{padding:104px 0}}
+
+/* ===== 홈: 히어로 (왼쪽 아래 큰 제목 · 흑백 영상) ===== */
+.hero video,.hero .hero-fallback{height:88vh;max-height:820px;min-height:520px;filter:grayscale(1) contrast(1.05)}
+.hero::after{background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.35) 45%,rgba(0,0,0,.72) 100%)}
+.hero-text{align-items:flex-start;justify-content:flex-end;text-align:left;padding:0 20px 56px;max-width:var(--max);margin:0 auto}
+.hero-text .eyebrow{font-size:11px;letter-spacing:.4em;margin-bottom:20px}
+.hero-text h1{font-family:var(--display);font-size:clamp(40px,10vw,108px);line-height:1.04;letter-spacing:-.01em;font-weight:700}
+.hero-text p{max-width:460px;margin-top:22px}
+.hero-cta{justify-content:flex-start;margin-top:30px}
+@media(min-width:960px){.hero-text{padding-bottom:88px}}
+
+/* ===== 홈: 소개 (왼쪽 큰 제목 · 오른쪽 본문) ===== */
+.home-about{max-width:var(--max);text-align:left;display:grid;gap:0 64px}
+.home-about h2{font-family:var(--display);font-size:clamp(30px,6.5vw,54px);line-height:1.15;letter-spacing:-.01em;margin-bottom:28px}
+.home-about h2 em{font-style:normal}
+.home-about p{font-size:15.5px;line-height:1.85}
+.home-points{max-width:none;margin:26px 0 0}
+@media(min-width:960px){
+  .home-about{grid-template-columns:5fr 7fr}
+  .home-about > .sec-head{grid-column:1 / -1}
+  .home-about > h2{grid-column:1;grid-row:2 / span 6;align-self:start}
+  .home-about > :not(.sec-head):not(h2){grid-column:2}
+  .home-about .more{justify-self:start}
+}
+
+/* ===== 시술 소개 ===== */
+.service-intro h2{font-family:var(--display);font-size:clamp(28px,5vw,44px);line-height:1.18;letter-spacing:-.01em;margin-bottom:22px}
+.service-intro h2 em{font-style:normal}
+.service-intro p{font-size:15.5px;line-height:1.85}
+
+/* ===== 흑백 사진 (마우스를 올리면 원래 색) ===== */
+.card img,.service-intro img,.service-photos img,.gallery-grid img,.designer-card > img,.loc-photo{filter:grayscale(1);transition:filter .5s ease}
+@media(hover:hover){
+  .card:hover img,.service-intro img:hover,.service-photos img:hover,.gallery-grid figure:hover img,.designer-card:hover > img,.loc-photo:hover{filter:none}
+}
+
+/* ===== 카드 · 상자: 배경 없이 가는 선 ===== */
+.card,.designer-card{background:transparent;border:0;border-top:1px solid var(--ink)}
+.card img{margin-top:14px}
+.card-body{padding:18px 0 6px}
+.card-body .tag{font-size:11px;letter-spacing:.3em;color:var(--ink-soft)}
+.card-body h3{font-family:var(--display);font-size:24px;letter-spacing:0;margin-top:8px}
+.card-body .from{font-family:var(--display);font-size:15px;letter-spacing:.04em}
+.card-body .more{color:var(--ink);border-bottom-color:var(--ink)}
+.card-grid{gap:28px 24px}
+.recruit-benefit .card-body{padding:20px 0 6px}
+.recruit-benefit .card-body .step{font-family:var(--display);font-size:15px;letter-spacing:0;color:var(--ink)}
+.recommend-box,.price-note{background:transparent;border:0;border-top:1px solid var(--ink);padding:20px 0 0}
+.recommend-box h3{letter-spacing:.14em;font-size:13px;text-transform:uppercase}
+.recommend-box li::before{content:"—";font-weight:400}
+.home-wig{border-bottom:1px solid var(--line);padding-bottom:28px}
+.home-wig h3{font-family:var(--display);font-size:clamp(22px,4.5vw,32px);letter-spacing:-.01em;text-transform:none;line-height:1.25;margin-bottom:6px}
+.service-cta{background:transparent;border-top:1px solid var(--ink);border-bottom:0}
+
+/* ===== 가격표 ===== */
+.price-table{background:transparent;border:0}
+.price-table th{border-bottom:1px solid var(--ink);letter-spacing:.2em;font-size:11px;text-transform:uppercase}
+.price-table.narrow th:last-child{white-space:normal}   /* 영어 「RECOMMENDED DESIGNER」 가 320px 에서 넘침 */
+.price-table td{border-bottom:1px solid var(--line)}
+.price-table td.price{font-family:var(--display);font-size:16px;font-weight:700;letter-spacing:.02em}
+.price-table td .nprice{font-family:var(--display);font-weight:400}
+.price-group{font-family:var(--display);font-size:22px;letter-spacing:0;color:var(--ink)}
+
+/* ===== 디자이너 ===== */
+.designer-body{padding:18px 0 4px}
+.designer-body .role{font-size:11px;letter-spacing:.3em;color:var(--ink-soft)}
+.designer-body h3{font-family:var(--display);font-size:24px;letter-spacing:0;margin-top:6px}
+.designer-body .certs{border-top-color:var(--line)}
+.designer-grid{gap:36px 24px}
+
+/* ===== 검은 섹션 (홈 디자이너 · 예약 안내 · 상담 CTA) ===== */
+section.tint{background:var(--black);color:var(--on-black);border:0}
+.tint .sec-head{border-top-color:var(--on-black-line)}
+.tint .sec-head .eyebrow,.tint .sec-head p,.tint .designer-body .role,.tint .designer-body h3 small,.tint .designer-body p{color:var(--on-black-soft)}
+.tint .sec-head .eyebrow::before,.tint .sec-head h2,.tint .designer-body h3,.tint .designer-body .field{color:var(--on-black)}
+.tint .designer-card{border-top-color:var(--on-black-line)}
+.tint .btn-outline{border-color:var(--on-black);color:var(--on-black)}
+.tint .btn-outline:hover{background:var(--on-black);color:var(--black)}
+.tint .designer-ig{color:var(--on-black)}
+.booking-banner{background:var(--black);text-align:left;padding:72px 20px}
+.booking-banner > *{max-width:calc(var(--max) - 40px);margin-left:auto;margin-right:auto}
+.booking-banner h2{font-family:var(--display);font-size:clamp(28px,6vw,52px);line-height:1.15;letter-spacing:-.01em}
+.booking-banner p{margin-top:16px}
+.booking-banner .btns{justify-content:flex-start;margin-top:30px}
+@media(min-width:960px){.booking-banner{padding:112px 20px}}
+
+/* ===== FAQ · 갤러리 · 오시는 길 ===== */
+.faq-list{gap:0;max-width:820px}
+.faq-list details,.faq-list details[open]{background:transparent;border:0;border-bottom:1px solid var(--line)}
+.faq-list details:first-child{border-top:1px solid var(--ink)}
+.faq-list summary{padding:20px 0;font-size:15.5px}
+.faq-list summary::before{font-family:var(--display);font-weight:400;font-size:18px;color:var(--ink)}
+.faq-a{padding:0 0 22px 30px}
+.gallery-cat{font-family:var(--display);font-size:clamp(26px,5vw,40px);letter-spacing:-.01em;padding-top:16px;border-top:1px solid var(--ink);margin:56px 0 18px}
+.gallery-cat:first-child{margin-top:0}
+.gallery-grid{gap:12px}
+.gallery-links a,.map-links a{background:transparent;border-color:var(--ink);color:var(--ink)}
+.gallery-links a:hover,.map-links a:hover{background:var(--ink);color:var(--bg)}
+.map-addr{background:transparent;border:0;border-bottom:1px solid var(--line);padding:16px 0}
+.loc-info b{color:var(--ink-soft);font-weight:600;letter-spacing:.04em}
+.loc-hours{border-top-color:var(--ink)}
+.recruit-contact{background:transparent;border:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);text-align:center}
+.recruit-contact .tel{font-family:var(--display);font-size:30px}
+/* ===== 디자인 템플릿 B 끝 ===== */
