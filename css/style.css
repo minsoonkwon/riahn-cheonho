@@ -57,9 +57,9 @@ h1,h2,h3,h4{font-weight:700}
 .btn-ink:hover{background:var(--wine)}
 .btn-outline{border:1px solid var(--hair);color:var(--ink)}
 .btn-outline:hover{background:var(--ink);color:var(--ivory)}
-.b-btns{display:flex;flex-direction:column;gap:16px;margin-top:40px}
+.b-btns{display:flex;flex-direction:column;gap:12px;margin-top:28px}
 @media(min-width:640px){.b-btns{flex-direction:row;flex-wrap:wrap}}
-.b-link{display:inline-flex;align-items:center;gap:8px;margin-top:40px;color:var(--wine)}
+.b-link{display:inline-flex;align-items:center;gap:8px;margin-top:28px;color:var(--wine)}
 .b-link svg,.hero-links svg{width:14px;height:14px}
 
 /* ===== 머리글 ===== */
@@ -95,32 +95,33 @@ html[lang="ja"] .gnb a,html[lang="zh-CN"] .gnb a{letter-spacing:.08em}
 @media(max-width:380px){.logo .branch{display:none}.wordmark{font-size:18px}}
 
 /* ===== 섹션 · 섹션 머리 ===== */
-.b-sec{padding:112px var(--pad);max-width:var(--max);margin:0 auto}
-@media(min-width:1024px){.b-sec{padding-top:160px;padding-bottom:160px}}
-.b-line{border-top:1px solid var(--hair)}
+.b-sec{padding:44px var(--pad);max-width:var(--max);margin:0 auto}
+@media(min-width:1024px){.b-sec{padding-top:64px;padding-bottom:64px}}
+.b-line{border-top:0}   /* 섹션 경계선은 쓰지 않음 — 제목 위 선(.sec-num)과 겹쳐 빈 공간이 두 배로 보이던 문제 (2026-10-20) */
 .b-top0{padding-top:0!important}
 .b-flush{padding:0;max-width:none}
-.b-pad{padding:0 var(--pad);max-width:var(--max);margin:0 auto 56px}
+.b-pad{padding:0 var(--pad);max-width:var(--max);margin:0 auto 32px}
 .sec-num{display:flex;align-items:baseline;gap:16px;border-top:1px solid var(--hair);padding-top:16px}
 .sec-num .eyebrow:last-child{color:var(--muted-fg)}
-.sec-head h2,.b-h2,.b-reserve h2{font-family:var(--display);font-size:clamp(30px,7vw,64px);line-height:1.02;letter-spacing:-.02em;margin-top:32px}
+.sec-head h2,.b-h2,.b-reserve h2{font-family:var(--display);font-size:clamp(30px,7vw,64px);line-height:1.02;letter-spacing:-.02em;margin-top:20px}
 .sec-head .body-text{color:var(--muted-fg);margin-top:16px;max-width:560px}
 h1 em,h2 em,h3 em{font-style:normal}
-.b-more{margin-top:40px}
+.b-more{margin-top:28px}
 
 /* 2단 (홈 소개 · 홈 오시는 길) */
-.b-split{display:grid;gap:48px}
+.b-split{display:grid;gap:28px}
 .b-split-body > .body-text + .body-text{margin-top:28px}
 .b-split-body > .body-text:not(:first-child){color:var(--muted-fg)}
 @media(min-width:1024px){
-  .b-split{grid-template-columns:.9fr 1.6fr;gap:96px}
-  .b-split .b-split-body{padding-top:96px;padding-right:96px}
+  .b-split{grid-template-columns:.9fr 1.6fr;gap:80px}
+  .b-split .b-split-body{padding-top:56px;padding-right:80px}
   .loc-split{grid-template-columns:1fr 1.4fr}
+  .loc-split .b-split-body{padding-top:48px}
   .loc-split .b-split-body{padding-right:0}
 }
-.b-points{margin-top:48px}
+.b-points{margin-top:32px}
 .b-points ul,.b-numlist{margin-top:16px;border-top:1px solid var(--hair);max-width:768px}
-.b-points li,.b-numlist li{display:flex;align-items:baseline;gap:20px;padding:20px 0;border-bottom:1px solid var(--hair);font-size:15px;font-weight:300}
+.b-points li,.b-numlist li{display:flex;align-items:baseline;gap:20px;padding:15px 0;border-bottom:1px solid var(--hair);font-size:15px;font-weight:300}
 .b-addr{font-family:var(--display);font-weight:700;font-size:24px;line-height:1.375}
 .loc-split .body-text{color:var(--muted-fg);margin-top:24px}
 
@@ -139,13 +140,12 @@ h1 em,h2 em,h3 em{font-style:normal}
 .hero-links a{display:inline-flex;align-items:center;gap:8px;opacity:.75;transition:opacity .2s}
 .hero-links a:hover{opacity:1}
 
-/* ===== 흑백 사진은 홈에만 (마우스를 올리면 원래 색) =====
-   2026-10-20 원장 요청: 「메인은 흑백이어도 괜찮고 디자이너 프로필·커트 등은 컬러」 → 하위 페이지 사진·지도는 원래 색 */
-.page-home :is(.card img,.b-photos img,.designer-card > img){filter:grayscale(1) contrast(1.05);transition:filter .9s}
-@media(hover:hover){.page-home :is(.card:hover img,.b-photos img:hover,.designer-card:hover > img){filter:none}}
+/* ===== 사진 색 =====
+   흑백은 홈 첫 화면(히어로 영상)에만 — 2026-10-20 원장 요청: 「메인은 첫 화면만 흑백, 시술 안내·디자이너·매장 사진과 하위 페이지는 컬러」
+   (히어로 영상 흑백은 위 .hero video 규칙) */
 
 /* ===== 홈: 시술 카드 ===== */
-.card-grid{display:grid;gap:64px 40px;margin-top:64px}
+.card-grid{display:grid;gap:40px 32px;margin-top:40px}
 @media(min-width:640px){.card-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.card-grid.cols-4{grid-template-columns:repeat(4,1fr)}}
 .card{display:block}
@@ -156,7 +156,7 @@ h1 em,h2 em,h3 em{font-style:normal}
 .card h3{font-family:var(--display);font-size:24px;margin-top:16px;letter-spacing:-.01em}
 .card .body-text{color:var(--muted-fg);margin-top:8px}
 .card .from{margin-top:16px}
-.home-wig{display:grid;gap:24px;align-items:end;margin-top:96px;padding-top:32px;border-top:1px solid var(--hair)}
+.home-wig{display:grid;gap:24px;align-items:end;margin-top:56px;padding-top:28px;border-top:1px solid var(--hair)}
 .home-wig h3{font-family:var(--display);font-size:clamp(22px,3vw,30px);letter-spacing:-.01em;line-height:1.25}
 .home-wig .body-text{color:var(--muted-fg);margin-top:12px}
 @media(min-width:1024px){.home-wig{grid-template-columns:1fr auto}}
@@ -171,14 +171,14 @@ h1 em,h2 em,h3 em{font-style:normal}
 .b-dark .btn-outline{border-color:var(--hair-light);color:var(--ivory)}
 .b-dark .b-h2{margin-top:20px}
 /* 시술 페이지 「이런 분께 추천합니다」 */
-.b-dark .recommend-box{display:grid;gap:0 48px;margin-top:56px;border-top:1px solid var(--hair-light)}
+.b-dark .recommend-box{display:grid;gap:0 48px;margin-top:36px;border-top:1px solid var(--hair-light)}
 @media(min-width:768px){.b-dark .recommend-box{grid-template-columns:1fr 1fr}}
-.recommend-box li{display:flex;align-items:flex-start;gap:16px;padding:28px 24px 28px 0;border-bottom:1px solid var(--hair-light);font-size:16px;font-weight:300}
+.recommend-box li{display:flex;align-items:flex-start;gap:16px;padding:20px 24px 20px 0;border-bottom:1px solid var(--hair-light);font-size:16px;font-weight:300}
 .recommend-box svg{width:20px;height:20px;flex-shrink:0;margin-top:3px}
 
 /* ===== 디자이너 ===== */
-.designer-grid{display:grid;gap:64px 40px;margin-top:64px}
-@media(min-width:768px){.designer-grid{grid-template-columns:repeat(3,1fr)}.designer-grid > :nth-child(3n+2){margin-top:64px}}
+.designer-grid{display:grid;gap:40px 32px;margin-top:40px}
+@media(min-width:768px){.designer-grid{grid-template-columns:repeat(3,1fr)}.designer-grid > :nth-child(3n+2){margin-top:48px}}
 .designer-card > img{width:100%;aspect-ratio:4/5;object-fit:cover}
 .designer-body h3{font-family:var(--display);font-size:24px;margin-top:20px;letter-spacing:-.01em}
 .designer-body .role{margin-top:8px;opacity:.6}
@@ -191,37 +191,37 @@ h1 em,h2 em,h3 em{font-style:normal}
 .designer-ig{display:inline-flex;align-items:center;gap:8px;margin-top:32px}
 .designer-ig:hover{color:var(--wine)}
 .designer-ig svg{width:16px;height:16px}
-.b-stagger{gap:80px 40px;margin-top:0}
+.b-stagger{gap:48px 32px;margin-top:0}
 .b-stagger .designer-body h3{font-size:30px}
 .b-stagger .role{opacity:1;color:var(--muted-fg)}
-@media(min-width:1024px){.b-stagger > :nth-child(3n+2){margin-top:80px}.b-stagger > :nth-child(3n){margin-top:160px}}
+@media(min-width:1024px){.b-stagger > :nth-child(3n+2){margin-top:56px}.b-stagger > :nth-child(3n){margin-top:112px}}
 
 /* ===== 사진 띠 (화면 전체 폭 · 정사각 · 1px 간격) ===== */
 .b-photos{display:grid;gap:1px;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}
 .b-photos img{width:100%;aspect-ratio:1/1;object-fit:cover}
 
 /* ===== 페이지 머리 (하위 페이지) ===== */
-.page-head{padding:64px var(--pad) 64px;max-width:var(--max);margin:0 auto}
-@media(min-width:1024px){.page-head{padding-top:96px;padding-bottom:80px}}
-.page-head h1{font-family:var(--display);font-size:clamp(34px,11vw,128px);line-height:.95;letter-spacing:-.02em;margin-top:24px}
-.page-head .lead{color:var(--muted-fg);margin-top:32px;max-width:448px}
-.breadcrumb{display:flex;gap:8px;margin-top:32px;font-size:11px;letter-spacing:.2em;color:var(--muted-fg)}
+.page-head{padding:40px var(--pad) 36px;max-width:var(--max);margin:0 auto}
+@media(min-width:1024px){.page-head{padding-top:64px;padding-bottom:48px}}
+.page-head h1{font-family:var(--display);font-size:clamp(34px,11vw,128px);line-height:.95;letter-spacing:-.02em;margin-top:16px}
+.page-head .lead{color:var(--muted-fg);margin-top:20px;max-width:448px}
+.breadcrumb{display:flex;gap:8px;margin-top:20px;font-size:11px;letter-spacing:.2em;color:var(--muted-fg)}
 .breadcrumb a:hover{color:var(--wine)}
 .breadcrumb .sep{opacity:.5}
 
 /* ===== 시술 소개 ===== */
-.service-intro{display:grid;gap:40px}
+.service-intro{display:grid;gap:28px}
 .service-intro img{width:100%;aspect-ratio:4/5;object-fit:cover}
 .b-lead{font-family:var(--display);font-size:clamp(24px,3vw,30px);line-height:1.375;letter-spacing:-.01em}
 .b-lead em{font-style:normal}
 .service-intro .body-text{color:var(--muted-fg);margin-top:24px}
-.b-start{margin-top:40px}
-@media(min-width:1024px){.service-intro{grid-template-columns:1.1fr 1fr;gap:80px}.service-intro .b-split-body{padding-top:64px}}
+.b-start{margin-top:28px}
+@media(min-width:1024px){.service-intro{grid-template-columns:1.1fr 1fr;gap:64px}.service-intro .b-split-body{padding-top:32px}}
 
 /* ===== 가격표 (줄 목록) ===== */
-.price-table{width:100%;border-collapse:collapse;margin-top:48px;border-top:1px solid var(--hair)}
+.price-table{width:100%;border-collapse:collapse;margin-top:32px;border-top:1px solid var(--hair)}
 .price-table tr{border-bottom:1px solid var(--hair)}
-.price-table td{padding:24px 0;vertical-align:baseline;font-size:16px}
+.price-table td{padding:18px 0;vertical-align:baseline;font-size:16px}
 .price-table td:first-child{padding-right:24px}
 .price-table td .name{font-weight:400}
 .price-table td .desc{display:block;font-size:13px;font-weight:300;color:var(--muted-fg);margin-top:6px}
@@ -229,41 +229,41 @@ h1 em,h2 em,h3 em{font-style:normal}
 .price-table td.price{text-align:right;white-space:nowrap;font-family:var(--display);font-weight:700;font-size:18px}
 .price-table td .nprice{display:block;font-family:var(--display);font-weight:400;font-size:13px;color:var(--muted-fg);margin-top:4px}
 .price-table td .opt{display:block}
-.price-group{font-family:var(--display);font-size:22px;letter-spacing:-.01em;margin:72px 0 0}
-.price-group + .price-table{margin-top:20px}
-.price-note{margin-top:28px;display:grid;gap:8px;font-size:13px;line-height:1.9;color:var(--muted-fg)}
+.price-group{font-family:var(--display);font-size:22px;letter-spacing:-.01em;margin:44px 0 0}
+.price-group + .price-table{margin-top:14px}
+.price-note{margin-top:20px;display:grid;gap:8px;font-size:13px;line-height:1.9;color:var(--muted-fg)}
 .price-note li{padding-left:22px;position:relative}
 .price-note li::before{content:"—";position:absolute;left:0}
 .b-guide td.price{font-family:var(--sans);font-weight:400;font-size:15px;white-space:normal}
 
 /* ===== FAQ ===== */
-.faq-list{counter-reset:faq;max-width:896px;margin-top:56px;border-top:1px solid var(--hair)}
+.faq-list{counter-reset:faq;max-width:896px;margin-top:36px;border-top:1px solid var(--hair)}
 .b-top0 .faq-list{margin-top:0}
 .faq-list details{border-bottom:1px solid var(--hair)}
-.faq-list summary{counter-increment:faq;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:start;padding:24px 0;cursor:pointer;list-style:none;font-size:16px;font-weight:400;line-height:1.625}
+.faq-list summary{counter-increment:faq;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:start;padding:18px 0;cursor:pointer;list-style:none;font-size:16px;font-weight:400;line-height:1.625}
 .faq-list summary::-webkit-details-marker{display:none}
 .faq-list summary::before{content:counter(faq,decimal-leading-zero);font-size:11px;letter-spacing:.32em;color:var(--wine);padding-top:4px}
 .faq-list summary::after{content:"+";font-size:22px;font-weight:200;line-height:1;color:var(--ink)}
 .faq-list details[open] summary::after{content:"–"}
-.faq-a{max-width:672px;padding:0 0 32px 54px;font-size:14px;font-weight:400;line-height:1.95;color:var(--muted-fg)}
+.faq-a{max-width:672px;padding:0 0 22px 54px;font-size:14px;font-weight:400;line-height:1.95;color:var(--muted-fg)}
 
 /* ===== 예약 · 상담 블록 (가운데) ===== */
-.b-reserve{text-align:center;padding:112px var(--pad)}
-@media(min-width:1024px){.b-reserve{padding:160px var(--pad)}}
-.b-reserve h2{margin-top:24px}
+.b-reserve{text-align:center;padding:52px var(--pad)}
+@media(min-width:1024px){.b-reserve{padding:72px var(--pad)}}
+.b-reserve h2{margin-top:16px}
 /* 앞 섹션(FAQ 등) 바로 뒤: 위아래 여백이 겹쳐 320px 이 되던 것을 가는 선 + 줄인 여백으로 */
-.b-sec + .b-reserve{border-top:1px solid var(--hair);max-width:calc(var(--max) - 2 * var(--pad));margin:0 auto;padding-top:96px}
+.b-sec + .b-reserve{border-top:1px solid var(--hair);max-width:calc(var(--max) - 2 * var(--pad));margin:0 auto;padding-top:56px}
 .b-dark + .b-reserve{border-top:0}
-@media(min-width:1024px){.b-sec:has(+ .b-reserve){padding-bottom:112px}}
-.b-reserve > .body-text{max-width:448px;margin:24px auto 0;color:var(--muted-fg)}
-.b-reserve .b-btns{justify-content:center;align-items:stretch;margin-top:48px}
+@media(min-width:1024px){.b-sec:has(+ .b-reserve){padding-bottom:56px}.b-sec + .b-reserve{padding-top:56px}}
+.b-reserve > .body-text{max-width:448px;margin:16px auto 0;color:var(--muted-fg)}
+.b-reserve .b-btns{justify-content:center;align-items:stretch;margin-top:28px}
 @media(min-width:640px){.b-reserve .b-btns{align-items:center}}
 
 /* ===== 가발 · 채용 상자 ===== */
-.b-frames{display:grid;gap:24px;margin-top:56px}
+.b-frames{display:grid;gap:16px;margin-top:36px}
 .b-top0 .b-frames{margin-top:0}
 @media(min-width:768px){.b-frames{grid-template-columns:repeat(3,1fr)}}
-.frame{border:1px solid var(--hair);padding:32px;min-width:0}
+.frame{border:1px solid var(--hair);padding:28px;min-width:0}
 @media(max-width:639px){.frame{padding:24px}}
 html[lang="ja"] .frame h3,html[lang="ja"] .card h3,html[lang="ja"] .home-wig h3{overflow-wrap:anywhere}
 .frame h3{font-family:var(--display);font-size:24px;margin-top:12px;letter-spacing:-.01em;line-height:1.3}
@@ -273,7 +273,7 @@ html[lang="ja"] .frame h3,html[lang="ja"] .card h3,html[lang="ja"] .home-wig h3{
 /* ===== 갤러리 ===== */
 .b-gallery{padding-bottom:0}
 .gallery-cat{display:flex;align-items:baseline;gap:16px;border-top:1px solid var(--hair);padding-top:16px;font-size:11px;letter-spacing:.32em;font-weight:400;color:var(--muted-fg)}
-.b-gallery .b-pad{margin-bottom:24px;margin-top:72px}
+.b-gallery .b-pad{margin-bottom:20px;margin-top:40px}
 .b-gallery .b-pad:first-child{margin-top:0}
 .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px}
 @media(min-width:1024px){.gallery-grid{grid-template-columns:repeat(4,1fr)}}
@@ -288,17 +288,17 @@ html[lang="ja"] .frame h3,html[lang="ja"] .card h3,html[lang="ja"] .home-wig h3{
 .map-links{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:20px}
 .map-links a{color:var(--muted-fg);border-bottom:1px solid var(--hair);padding-bottom:2px}
 .map-links a:hover{color:var(--wine)}
-.loc-grid{display:grid;gap:64px}
-@media(min-width:1024px){.loc-grid{grid-template-columns:1fr 1.3fr;gap:96px}}
-.loc-grid .b-addr{margin-top:32px}
+.loc-grid{display:grid;gap:40px}
+@media(min-width:1024px){.loc-grid{grid-template-columns:1fr 1.3fr;gap:72px}}
+.loc-grid .b-addr{margin-top:24px}
 .loc-grid .faint{margin-top:12px}
-.loc-info{margin-top:40px;display:grid;gap:12px;font-size:13px;line-height:1.9}
+.loc-info{margin-top:28px;display:grid;gap:12px;font-size:13px;line-height:1.9}
 .loc-info li{display:grid;grid-template-columns:96px minmax(0,1fr);gap:16px}
 .loc-info b{color:var(--muted-fg);padding-top:2px}
 .loc-info a.tel{border-bottom:1px solid var(--hair)}
-.b-hours{width:100%;border-collapse:collapse;margin-top:32px;border-top:1px solid var(--hair)}
+.b-hours{width:100%;border-collapse:collapse;margin-top:24px;border-top:1px solid var(--hair)}
 .b-hours tr{border-bottom:1px solid var(--hair)}
-.b-hours td{padding:20px 0;font-size:16px;font-weight:300;vertical-align:baseline}
+.b-hours td{padding:14px 0;font-size:16px;font-weight:300;vertical-align:baseline}
 .b-hours td.t{font-family:var(--display);font-weight:700;font-size:18px;text-align:right}
 .b-hours td.closed{color:var(--wine);font-family:var(--sans);font-weight:400;font-size:15px}
 .b-hours td:last-child{width:0}
@@ -306,15 +306,15 @@ html[lang="ja"] .frame h3,html[lang="ja"] .card h3,html[lang="ja"] .home-wig h3{
 
 /* ===== 채용 ===== */
 .recruit-jobs{margin-top:48px}
-.recruit-contact{margin:48px auto 0;max-width:420px;padding:28px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.recruit-contact{margin:28px auto 0;max-width:420px;padding:28px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
 .recruit-contact .tel{display:inline-block;margin-top:8px;font-family:var(--display);font-size:32px;font-weight:700;letter-spacing:.02em}
 .recruit-contact .body-text{margin-top:8px}
 .recruit-visit{margin-top:32px}
 
 /* ===== 바닥글 ===== */
-.footer{background:var(--ink);color:var(--ivory);padding:80px var(--pad) 40px}
-@media(min-width:1024px){.footer{padding-top:112px}}
-.footer-inner{display:grid;gap:56px;max-width:var(--max);margin:0 auto}
+.footer{background:var(--ink);color:var(--ivory);padding:56px var(--pad) 32px}
+@media(min-width:1024px){.footer{padding-top:72px}}
+.footer-inner{display:grid;gap:36px;max-width:var(--max);margin:0 auto}
 @media(min-width:1024px){.footer-inner{grid-template-columns:1.4fr 1fr 1fr}}
 .footer-mark{font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:.18em}
 @media(min-width:1024px){.footer-mark{font-size:36px}}
@@ -329,7 +329,7 @@ html[lang="ja"] .frame h3,html[lang="ja"] .card h3,html[lang="ja"] .home-wig h3{
 .footer-nav{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;align-self:start}
 .footer-nav a{font-size:11px;letter-spacing:.24em;text-transform:uppercase;opacity:.7;transition:opacity .2s}
 .footer-nav a:hover{opacity:1}
-.footer .copy{max-width:var(--max);margin:64px auto 0;padding-top:24px;border-top:1px solid var(--hair-light);font-size:11px;letter-spacing:.18em;opacity:.5}
+.footer .copy{max-width:var(--max);margin:40px auto 0;padding-top:24px;border-top:1px solid var(--hair-light);font-size:11px;letter-spacing:.18em;opacity:.5}
 
 /* ===== 하단 고정바 (전체 폭 검은 3칸) ===== */
 .fixed-bar{position:fixed;left:0;right:0;bottom:0;z-index:200;display:grid;grid-template-columns:repeat(3,1fr);background:var(--ink);color:var(--ivory);padding-bottom:env(safe-area-inset-bottom)}
