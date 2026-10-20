@@ -6,7 +6,7 @@
    - 참고 화면 값: 잉크 #0E0E0E · 아이보리 #F3F1EB · 와인 #6C2331 · 보조글 #6A6966 · 가는 선 잉크 18%
      eyebrow 11px/자간 .32em 대문자 · 본문 14px/줄간격 1.95/굵기 300~400 · 큰 제목 세리프 700, 자간 -.02em
      화면 전체 폭 + 좌우 여백 20px(모바일)/40px(PC) · 섹션 위아래 112px/160px · 하단 고정바는 PC 에서도 전체 폭 검은 3칸
-   - 외부 폰트 없음 (CLAUDE.md 13절): 참고 화면의 Playfair Display 대신 영문 Georgia·숫자 Times New Roman(PC 기본 글꼴), 한글은 기본 고딕
+   - 글꼴: 사이트에 직접 넣은 웹 글꼴(외부 서버 아님, 2026-10-20 사용자 허용) — 한글 Noto Sans KR · 영문 로고·제목 Montserrat. _build/templates/fonts.py 가 쓰는 글자만 남겨 만듦
    - 적용: python _build/templates/apply_template.py <매장 폴더명> B   (이 파일로 style.css 를 통째로 만든다)
    만든 날: 2026-10-19 (천호역점) */
 
@@ -23,14 +23,19 @@
   --bar-h:52px;
   /* A안 토큰 이름 (매장별 추가 규칙 호환) */
   --bg:var(--ivory);--bg-card:var(--ivory);--ink-soft:var(--muted-fg);--accent:var(--wine);--accent-dark:var(--ink);--line:var(--hair);--line-soft:var(--hair);--white:#fff;
-  --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
-  --display:"B Serif Latin","Times New Roman",Times,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --sans:"B Sans","Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --mark:"B Display","Helvetica Neue",Arial,sans-serif;      /* 영문 로고(RIAHN HAIR)·히어로 큰 글자 — Montserrat (2026-10-20 사용자 선택 「A」, Playfair 에서 교체: 브랜드 로고 RIAHN 과 같은 계열 굵은 산세리프) */
+  --display:"B Display",var(--sans);                        /* 제목: 영문·숫자는 Montserrat, 한글은 Noto Sans KR 굵게 */
 }
-html[lang="ja"]{--display:"B Serif Latin","Times New Roman",Times,"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Meiryo",sans-serif}
-html[lang="zh-CN"]{--display:"B Serif Latin","Times New Roman",Times,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif}
-/* 영문 글자만 Georgia (PC 에 깔린 글꼴 local — 내려받지 않음). Georgia 숫자는 옛날식이라 숫자·기호는 Times New Roman */
-@font-face{font-family:"B Serif Latin";src:local("Georgia"),local("Georgia Regular");font-weight:400;unicode-range:U+0041-005A,U+0061-007A,U+00C0-00FF}
-@font-face{font-family:"B Serif Latin";src:local("Georgia Bold"),local("Georgia-Bold");font-weight:700;unicode-range:U+0041-005A,U+0061-007A,U+00C0-00FF}
+/* 한국어 페이지 제목은 한글 글꼴 하나로 — 「천호역 9번」처럼 숫자만 세리프로 섞이면 어색함 (2026-10-20) */
+html[lang="ko"]{--display:var(--sans)}
+/* 일본어·중국어: 웹 글꼴(B Sans)은 한국어·영어 글자만 들어 있어 기기 글꼴을 쓴다 */
+html[lang="ja"]{--sans:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic","YuGothic","Meiryo",sans-serif;--display:"B Display",var(--sans)}
+html[lang="zh-CN"]{--sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;--display:"B Display",var(--sans)}
+/* 사이트에 직접 넣은 웹 글꼴 (외부 서버 아님 · SIL OFL) — _build/templates/fonts.py 가 매장에서 쓰는 글자만 남겨 만들고 ?v= 를 붙인다
+   B Sans = Noto Sans KR (가변 굵기) · B Display = Montserrat (영문·숫자·기호만, 가변 굵기) */
+@font-face{font-family:"B Sans";src:url(/fonts/b-sans.woff2?v=614947e5) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"B Display";src:url(/fonts/b-display.woff2?v=e306fae1) format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0020-007E,U+00A0-00FF,U+2013-2026}
 @media(min-width:1024px){:root{--pad:40px}}
 
 /* ===== 기본 ===== */
@@ -66,7 +71,7 @@ h1,h2,h3,h4{font-weight:700}
 .header{position:sticky;top:0;z-index:100;background:rgba(243,241,235,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
 .header-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:16px;padding:16px var(--pad);max-width:var(--max);margin:0 auto}
 .logo{display:flex;align-items:baseline;gap:14px;min-width:0}
-.wordmark{font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:.2em;white-space:nowrap}
+.wordmark{font-family:var(--mark);font-weight:700;font-size:20px;letter-spacing:.2em;white-space:nowrap}
 .logo .branch{font-size:11px;letter-spacing:.24em;color:var(--muted-fg);white-space:nowrap}
 .header-right{display:flex;align-items:center;gap:24px}
 .gnb{display:none;align-items:center;gap:20px}
@@ -103,7 +108,7 @@ html[lang="ja"] .gnb a,html[lang="zh-CN"] .gnb a{letter-spacing:.08em}
 .b-pad{padding:0 var(--pad);max-width:var(--max);margin:0 auto 32px}
 .sec-num{display:flex;align-items:baseline;gap:16px;border-top:1px solid var(--hair);padding-top:16px}
 .sec-num .eyebrow:last-child{color:var(--muted-fg)}
-.sec-head h2,.b-h2,.b-reserve h2{font-family:var(--display);font-size:clamp(30px,7vw,64px);line-height:1.02;letter-spacing:-.02em;margin-top:20px}
+.sec-head h2,.b-h2,.b-reserve h2{font-family:var(--display);font-size:clamp(27px,7.6vw,64px);line-height:1.12;letter-spacing:-.01em;margin-top:20px}
 .sec-head .body-text{color:var(--muted-fg);margin-top:16px;max-width:560px}
 h1 em,h2 em,h3 em{font-style:normal}
 .b-more{margin-top:28px}
@@ -132,7 +137,7 @@ h1 em,h2 em,h3 em{font-style:normal}
 .hero-text{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 var(--pad) 96px;max-width:var(--max);margin:0 auto}
 @media(min-width:1024px){.hero-text{padding-bottom:112px}}
 .hero-eyebrow{opacity:.7}
-.hero-mark{font-family:var(--display);font-weight:700;font-size:clamp(52px,15vw,208px);line-height:.86;letter-spacing:-.02em;margin:24px 0 0 -4px}
+.hero-mark{font-family:var(--mark);font-weight:700;font-size:clamp(64px,23vw,208px);line-height:.86;letter-spacing:-.01em;margin:24px 0 0 -4px}
 .hero-foot{margin-top:32px;padding-top:24px;border-top:1px solid rgba(243,241,235,.25);display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
 .hero-copy h1{font-size:15px;font-weight:500;letter-spacing:.04em;line-height:1.7}
 .hero-copy p{max-width:360px;margin-top:6px;font-size:13px;font-weight:300;line-height:2;opacity:.8}
@@ -203,7 +208,7 @@ h1 em,h2 em,h3 em{font-style:normal}
 /* ===== 페이지 머리 (하위 페이지) ===== */
 .page-head{padding:40px var(--pad) 36px;max-width:var(--max);margin:0 auto}
 @media(min-width:1024px){.page-head{padding-top:64px;padding-bottom:48px}}
-.page-head h1{font-family:var(--display);font-size:clamp(34px,11vw,128px);line-height:.95;letter-spacing:-.02em;margin-top:16px}
+.page-head h1{font-family:var(--display);font-size:clamp(34px,11vw,128px);line-height:1.05;letter-spacing:-.01em;margin-top:16px}   /* Montserrat 는 Playfair 보다 키가 커서 줄간격을 넓힘 (2026-10-20) */
 .page-head .lead{color:var(--muted-fg);margin-top:20px;max-width:448px}
 .breadcrumb{display:flex;gap:8px;margin-top:20px;font-size:11px;letter-spacing:.2em;color:var(--muted-fg)}
 .breadcrumb a:hover{color:var(--wine)}
@@ -316,7 +321,7 @@ html[lang="ja"] .frame h3,html[lang="ja"] .card h3,html[lang="ja"] .home-wig h3{
 @media(min-width:1024px){.footer{padding-top:72px}}
 .footer-inner{display:grid;gap:36px;max-width:var(--max);margin:0 auto}
 @media(min-width:1024px){.footer-inner{grid-template-columns:1.4fr 1fr 1fr}}
-.footer-mark{font-family:var(--display);font-weight:700;font-size:30px;letter-spacing:.18em}
+.footer-mark{font-family:var(--mark);font-weight:700;font-size:30px;letter-spacing:.18em}
 @media(min-width:1024px){.footer-mark{font-size:36px}}
 .footer-branch{margin-top:8px;opacity:.6}
 .footer-desc{margin-top:16px;max-width:384px;opacity:.7}
@@ -338,6 +343,8 @@ html[lang="ja"] .frame h3,html[lang="ja"] .card h3,html[lang="ja"] .home-wig h3{
 .fixed-bar a:hover{color:#D9A3AD}
 .fixed-bar svg{width:16px;height:16px;flex-shrink:0;stroke-width:1.2}
 @media(max-width:350px){.fixed-bar a{letter-spacing:.1em;gap:6px}}
+/* 영어 하단바: Noto Sans 영문은 기기 글꼴보다 넓어 400px 이하에서 「NAVER BOOKING」「INSTAGRAM DM」이 칸에 꽉 참 (2026-10-20) */
+@media(max-width:400px){html[lang="en"] .fixed-bar a{letter-spacing:.08em;gap:5px;font-size:10.5px}}
 
 /* ===== 한·중·일 글자 다듬기 (2026-10-19 점검) =====
    영문 대문자용 넓은 자간(.2~.32em)·11px 를 한글·가나·한자에 쓰면 글자가 흩어져 보여, 지역 언어로 쓰인 작은 글씨만 자간을 좁히고 키운다.
@@ -352,6 +359,66 @@ html:not([lang="en"]) .from,html:not([lang="en"]) .b-start{font-size:13px;font-w
 html:not([lang="en"]) .page-head h1{line-height:1.1}
 html:not([lang="en"]) :is(.sec-head h2,.b-h2,.b-reserve h2){line-height:1.2}
 html:not([lang="en"]) .b-lead{line-height:1.45}
+/* ===== 한·중·일 제목·본문 크기 (2026-10-20 · 사용자 「글씨 폰트·크기가 전체적으로 맘에 안 든다」) =====
+   참고 화면의 크기(제목 64px·본문 14px)는 짧은 영문 문구 기준이라, 긴 한국어 문장을 넣으면 제목은 4~5줄로 쌓여 무겁고 본문은 작고 빽빽하다.
+   → 한·중·일 제목은 한 단계 작고 줄간격을 넉넉히, 본문은 15~16px 보통 굵기로. 영어 페이지는 참고 화면 크기 그대로 */
+html:not([lang="en"]) :is(.sec-head h2,.b-h2,.b-reserve h2){font-size:clamp(28px,4.6vw,44px);line-height:1.3;letter-spacing:-.03em}
+/* PC: 홈 소개 제목 「천호역 9번 출구 인근, / 리안헤어 천호역점입니다.」가 3줄로 쪼개지지 않게 왼쪽 칸을 넓히고 화면 폭에 맞춰 줄임 */
+@media(min-width:1024px){
+  html:not([lang="en"]) :is(.sec-head h2,.b-h2,.b-reserve h2){font-size:min(3.4vw,44px)}
+  html:not([lang="en"]) .b-split{grid-template-columns:1fr 1.4fr}
+}
+html:not([lang="en"]) .page-head h1{font-size:clamp(36px,8.4vw,84px);line-height:1.15;letter-spacing:-.035em}
+html:not([lang="en"]) .b-lead{font-size:clamp(20px,2.2vw,25px);font-weight:500;line-height:1.55;letter-spacing:-.02em}
+html:not([lang="en"]) :is(.card h3,.frame h3){font-size:22px;letter-spacing:-.02em}
+html:not([lang="en"]) .home-wig h3{font-size:clamp(21px,2.4vw,26px);letter-spacing:-.02em;line-height:1.4}
+html:not([lang="en"]) .designer-body h3{letter-spacing:-.01em}
+html:not([lang="en"]) .b-addr{font-size:21px;font-weight:600;line-height:1.5;letter-spacing:-.01em}
+html:not([lang="en"]) .price-group{font-size:20px;letter-spacing:-.02em}
+html:not([lang="en"]) .mobile-nav .m-name{font-size:22px;letter-spacing:-.01em}
+html:not([lang="en"]) .body-text{font-size:15px;line-height:1.9}
+@media(min-width:1024px){html:not([lang="en"]) .body-text{font-size:16px}}
+html:not([lang="en"]) .hero-copy h1{font-size:16px}
+html:not([lang="en"]) .hero-copy p{font-size:14.5px;font-weight:400;line-height:1.85;opacity:.85}
+html:not([lang="en"]) :is(.b-points li,.b-numlist li,.recommend-box li,.b-hours td){font-weight:400}
+html:not([lang="en"]) :is(.b-points li,.b-numlist li){font-size:16px}
+html:not([lang="en"]) .faq-list summary{font-weight:500}
+html:not([lang="en"]) .faq-a{font-size:15px;line-height:1.9}
+html:not([lang="en"]) :is(.price-table td .desc,.price-table td .time,.price-note,.loc-info,.designer-body .certs li){font-size:14px}
+html:not([lang="en"]) .footer-info{font-size:13.5px;font-weight:400}
+
+/* ===== 작은 글씨 키우기 (2026-10-20 3차 · 사용자 「영문 RIAHN HAIR·메뉴 탭 글씨가 너무 작고, 소문구가 전반적으로 작다」) =====
+   참고 화면의 11px 영문 라벨·메뉴는 큰 화면 기준이라 휴대폰에서 읽기 힘듦 → 라벨 12~13px, 메뉴 한글 15px, 소문구 14~15px, 본문 16~17px */
+.wordmark{font-size:22px}
+@media(min-width:1280px){.wordmark{font-size:28px}}
+@media(max-width:380px){.wordmark{font-size:19px}}
+.logo .branch{font-size:12px}
+.eyebrow{font-size:12px;letter-spacing:.26em}
+@media(min-width:1024px){.eyebrow{font-size:13px}}
+.gnb a{font-size:12px}
+.lang-switch a,.lang-row a{font-size:12.5px}
+.breadcrumb,.footer-sns a,.footer-nav a,.footer .copy,.gallery-cat,.faq-list summary::before{font-size:12px}
+.btn-ink,.btn-outline{font-size:13px}
+.fixed-bar a{font-size:12px}
+@media(max-width:400px){html[lang="en"] .fixed-bar a{letter-spacing:.06em;gap:5px;font-size:11.5px}}
+.hero-copy p{font-size:14px}
+:is(.price-table td .desc,.price-table td .time,.price-table td .nprice,.price-note,.loc-info,.designer-body .certs li,.footer-info){font-size:14px}
+html:not([lang="en"]) .gnb a{font-size:15px}
+html:not([lang="en"]) .lang-switch a{font-size:13px}
+html:not([lang="en"]) :is(.logo .branch,.hero-links a,.b-link,.from,.b-start,.designer-body .role,.designer-body .field,.footer-branch,.footer-sns a,.footer-nav a,.breadcrumb,.map-links a,.loc-info b,.certs h4,.recruit-contact .eyebrow,.b-points > .eyebrow,.gallery-cat){font-size:14px}
+html:not([lang="en"]) :is(.btn-ink,.btn-outline){font-size:15px}
+html:not([lang="en"]) .fixed-bar a{font-size:14px}
+html:not([lang="en"]) .from,html:not([lang="en"]) .b-start{font-size:14.5px}
+html:not([lang="en"]) .hero-copy h1{font-size:17px}
+html:not([lang="en"]) .hero-copy p{font-size:15.5px}
+html:not([lang="en"]) .body-text{font-size:16px}
+@media(min-width:1024px){html:not([lang="en"]) .body-text{font-size:17px}}
+html:not([lang="en"]) .faq-a{font-size:16px}
+html:not([lang="en"]) :is(.price-table td .desc,.price-table td .time,.price-note,.loc-info,.designer-body .certs li,.footer-info){font-size:15px}
+html:not([lang="en"]) .price-table td .nprice{font-size:14px}   /* 가격 칸은 줄바꿈 없음 — 15px 이면 320px 화면에서 표가 4px 넘침 */
+.price-table td .nprice{white-space:normal}   /* 「NAVER予約 ₩72,000」 같은 네이버가는 좁은 화면에서 「예약」 뒤에서 줄바꿈 (금액은 .nw 로 한 덩어리) */
+@media(min-width:1024px){html:not([lang="en"]) :is(.b-points li,.b-numlist li,.recommend-box li,.price-table td,.faq-list summary){font-size:17px}}
+
 /* 영어 전문 분야(긴 대문자 나열)는 자간을 조금 줄여 마지막 줄에 한 단어만 남지 않게 */
 html[lang="en"] .designer-body .field{letter-spacing:.18em}
 .designer-body .field{text-wrap:balance}
