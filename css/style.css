@@ -34,8 +34,8 @@ html[lang="ja"]{--sans:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragin
 html[lang="zh-CN"]{--sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;--display:"B Display",var(--sans)}
 /* 사이트에 직접 넣은 웹 글꼴 (외부 서버 아님 · SIL OFL) — _build/templates/fonts.py 가 매장에서 쓰는 글자만 남겨 만들고 ?v= 를 붙인다
    B Sans = Noto Sans KR (가변 굵기) · B Display = Montserrat (영문·숫자·기호만, 가변 굵기) */
-@font-face{font-family:"B Sans";src:url(/fonts/b-sans.woff2?v=85d194d0) format("woff2");font-weight:100 900;font-display:swap}
-@font-face{font-family:"B Display";src:url(/fonts/b-display.woff2?v=fbaa300a) format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0020-007E,U+00A0-00FF,U+2013-2026}
+@font-face{font-family:"B Sans";src:url(/fonts/b-sans.woff2?v=5473492c) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"B Display";src:url(/fonts/b-display.woff2?v=0f96f019) format("woff2");font-weight:100 900;font-display:swap;unicode-range:U+0020-007E,U+00A0-00FF,U+2013-2026}
 @media(min-width:1024px){:root{--pad:40px}}
 
 /* ===== 기본 ===== */
@@ -207,6 +207,8 @@ h1 em,h2 em,h3 em{font-style:normal}
 /* 시술 페이지 사진 띠에 남은 사진이 한 장이면 가운데 한 장 (2026-10-20 · 위 소개 사진 중복 제거) */
 .b-photos.one{grid-template-columns:minmax(0,720px);justify-content:center;padding:0 var(--pad)}
 .b-photos.one img{aspect-ratio:4/3}
+/* 두 장이면 정사각형이 화면 절반씩 너무 커져 4:3 으로 (2026-10-22) */
+.b-photos.two img{aspect-ratio:4/3}
 
 /* ===== 페이지 머리 (하위 페이지) ===== */
 .page-head{padding:40px var(--pad) 36px;max-width:var(--max);margin:0 auto}
