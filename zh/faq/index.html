@@ -55,18 +55,10 @@
     },
     {
       "@type": "Question",
-      "name": "营业时间是几点？",
+      "name": "营业时间和休息日是什么时候？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "周一、周三、周四、周五、周六、周日 10:00–20:00。"
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "哪天休息？",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "每周二固定休息。"
+        "text": "周一、周三、周四、周五、周六、周日 10:00–20:00 营业，每周二固定休息。"
       }
     },
     {
@@ -103,10 +95,18 @@
     },
     {
       "@type": "Question",
-      "name": "怎么去门店？",
+      "name": "和 RIAHN Hair 千户Rodeo店是同一家店吗？",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "千户站9号出口步行157米，Himart 旁边大楼的2楼。地址为 서울 송파구 바람드리길 59 2층。"
+        "text": "不是。RIAHN Hair Cheonho Station 是位于 서울 송파구 바람드리길 59 2층（千户站9号出口步行157米，Himart 旁边的大楼）的另一家门店，与江东区 천호대로157길 41 的“RIAHN Hair 千户Rodeo店（리안헤어 천호로데오점）”地点、电话和预约均不同。"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "以前是 Lavon Hair 千户店吗？",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "是的。“Lavon Hair 千户店（라본헤어 천호점）”在同一地点更名为 RIAHN Hair Cheonho Station 继续营业。"
       }
     }
   ]
@@ -214,8 +214,14 @@
     "https://m.place.naver.com/hairshop/38703835/home",
     "https://www.google.com/maps?cid=5649969981251295841",
     "https://www.instagram.com/riahn_chunho",
-    "https://blog.naver.com/whdgus9209"
-  ]
+    "https://blog.naver.com/whdgus9209",
+    "https://www.daangn.com/kr/local-profile/%EB%A6%AC%EC%95%88%ED%97%A4%EC%96%B4%EC%B2%9C%ED%98%B8%EC%97%AD%EC%A0%90-rffvqi9b9uv8/"
+  ],
+  "parentOrganization": {
+    "@type": "Organization",
+    "name": "리안헤어(RIAHN Hair)",
+    "url": "https://riahn.co.kr"
+  }
 }
 </script>
 <!-- 확인 필요: 결제 수단 (paymentAccepted 생략) -->
@@ -259,7 +265,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32.png">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-<link rel="stylesheet" href="/css/style.css?v=3168e204">
+<link rel="stylesheet" href="/css/style.css?v=ae9802df">
 </head>
 <body>
 
@@ -323,12 +329,8 @@
         <div class="faq-a">有。使用风纳市场停车场时，剪发可免费停车<span class="nw">30分</span>钟，其他项目可免费停车1<span class="nw">小时。</span></div>
       </details>
       <details>
-        <summary><span class="q">营业时间是<span class="nw">几点？</span></span></summary>
-        <div class="faq-a">周一、周三、周四、周五、周六、周日 10:00–20:00。</div>
-      </details>
-      <details>
-        <summary><span class="q">哪天<span class="nw">休息？</span></span></summary>
-        <div class="faq-a">每周二固定<span class="nw">休息。</span></div>
+        <summary><span class="q">营业时间和休息日是什么<span class="nw">时候？</span></span></summary>
+        <div class="faq-a">周一、周三、周四、周五、周六、周日 10:00–20:00 营业，每周二固定<span class="nw">休息。</span></div>
       </details>
       <details>
         <summary><span class="q">价格大概是<span class="nw">多少？</span></span></summary>
@@ -347,8 +349,12 @@
         <div class="faq-a"><span class="nw">可以。</span>定制假发、女士和男士假发以及接发、增发由 <span class="nw">Dain</span> 院长咨询，并在另设的私人包间<span class="nw">操作。</span></div>
       </details>
       <details>
-        <summary><span class="q">怎么去<span class="nw">门店？</span></span></summary>
-        <div class="faq-a">千户站9号出口步行157米，<span class="nw">Himart</span> 旁边大楼的2楼。地址为 <span class="nw">서울 송파구 바람드리길</span> 59 <span class="nw">2층</span>。</div>
+        <summary><span class="q">和 <span class="nw">RIAHN</span> <span class="nw">Hair</span> 千户<span class="nw">Rodeo</span>店是<span class="nw">同一家店吗？</span></span></summary>
+        <div class="faq-a"><span class="nw">不是。</span><span class="nw">RIAHN</span> <span class="nw">Hair</span> <span class="nw">Cheonho</span> <span class="nw">Station</span> 是位于 <span class="nw">서울 송파구 바람드리길</span> 59 <span class="nw">2층</span>（千户站9号出口步行157米，<span class="nw">Himart</span> 旁边的大楼）的另一家门店，与江东区 <span class="nw">천호대로</span>157<span class="nw">길</span> 41 的“<span class="nw">RIAHN</span> <span class="nw">Hair</span> 千户<span class="nw">Rodeo</span>店（<span class="nw">리안헤어 천호로데오점</span>）”地点、电话和预约均<span class="nw">不同。</span></div>
+      </details>
+      <details>
+        <summary><span class="q">以前是 <span class="nw">Lavon</span> <span class="nw">Hair</span> <span class="nw">千户店吗？</span></span></summary>
+        <div class="faq-a"><span class="nw">是的。</span>“<span class="nw">Lavon</span> <span class="nw">Hair</span> 千户店（<span class="nw">라본헤어 천호점</span>）”在同一地点更名为 <span class="nw">RIAHN</span> <span class="nw">Hair</span> <span class="nw">Cheonho</span> <span class="nw">Station</span> 继续<span class="nw">营业。</span></div>
       </details>
   </div>
 </section>
